@@ -1,4 +1,4 @@
-/* --- ORIGINAL STYLES --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -426,10 +426,10 @@ section {
   box-shadow: 0 45px 90px rgba(0,0,0,0.3);
 }
 
-.connect-card:nth-child(1) i { color: #000; }        /* GitHub */
-.connect-card:nth-child(2) i { color: #0a66c2; }     /* LinkedIn */
-.connect-card:nth-child(3) i { color: #c71610; }     /* Email */
-.connect-card:nth-child(4) i { color: #f89f1b; }     /* LeetCode */
+.connect-card:nth-child(1) i { color: #000; }        
+.connect-card:nth-child(2) i { color: #0a66c2; }     
+.connect-card:nth-child(3) i { color: #c71610; }   
+.connect-card:nth-child(4) i { color: #f89f1b; }    
 
 .navbar {
   position: fixed;
@@ -505,15 +505,10 @@ html {
   font-size: 1rem;
 }
 
-/* --- NEW RESPONSIVE UPDATES --- */
-
-/* 1. Global image safety */
 img {
   max-width: 100%;
   height: auto;
 }
-
-/* 2. Mobile Navbar with Horizontal Scroll */
 @media (max-width: 768px) {
   .navbar {
     padding: 10px 15px;
@@ -524,7 +519,7 @@ img {
   }
   
   body {
-    padding-top: 115px; /* Added more space for taller mobile nav */
+    padding-top: 115px; 
   }
 
   .nav-logo {
@@ -535,31 +530,31 @@ img {
   .nav-links {
     width: 100%;
     display: flex;
-    overflow-x: auto; /* Enable horizontal swiping */
-    white-space: nowrap; /* Keep links in one line */
+    overflow-x: auto; 
+    white-space: nowrap; 
     padding: 5px 0 10px 0;
     gap: 20px;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
 
-  /* Hide scrollbar for Chrome/Safari */
+  
   .nav-links::-webkit-scrollbar {
     display: none;
   }
 
   .nav-links li {
-    flex: 0 0 auto; /* Prevent links from shrinking */
+    flex: 0 0 auto; 
   }
 }
 
-/* 3. Intro Section Scaling for Mobile */
+
 @media (max-width: 768px) {
   .profile-wrapper {
     width: 280px;
     height: 280px;
-    transform: scale(1.1) rotateX(15deg); /* Scaled down for mobile */
+    transform: scale(1.1) rotateX(15deg); 
   }
 
   .profile-wrapper.final {
@@ -582,10 +577,10 @@ img {
   }
 }
 
-/* 4. Column Adjustments for Tablet/Mobile */
+
 @media (max-width: 900px) {
   .project-container {
-    grid-template-columns: 1fr; /* Stack projects vertically */
+    grid-template-columns: 1fr; 
   }
 
   .center-card {
@@ -593,7 +588,7 @@ img {
   }
   
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row for skills */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 15px;
   }
 
@@ -605,11 +600,11 @@ img {
   .achievement-grid, 
   .certificate-grid, 
   .connect-grid {
-    grid-template-columns: 1fr; /* Single column layout */
+    grid-template-columns: 1fr; 
   }
 }
 
-/* 5. Padding and Spacing Adjustments */
+
 @media (max-width: 768px) {
   .glass-club {
     padding: 25px 15px;
