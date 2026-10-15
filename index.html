@@ -294,16 +294,41 @@
 </section>
 
 
+
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact Me</h2>
-  <p class="contact-subtitle">Open to opportunities and collaborations.</p>
+  <p class="contact-subtitle">
+    Open to opportunities and collaborations.
+  </p>
 
-  <form class="contact-glass" action="mailto:vishwakarmadivyanshijan10@gmail.com" method="POST" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" required></textarea>
-    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+  <form class="contact-glass" id="contactForm">
+    <input
+      type="text"
+      id="contactName"
+      placeholder="Your name"
+      autocomplete="name"
+      required
+    >
+
+    <input
+      type="email"
+      id="contactEmail"
+      placeholder="Your email"
+      autocomplete="email"
+      required
+    >
+
+    <textarea
+      id="contactMessage"
+      placeholder="Your message"
+      rows="5"
+      required
+    ></textarea>
+
+    <button type="submit">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
   </form>
 </section>
 

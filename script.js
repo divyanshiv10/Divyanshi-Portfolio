@@ -61,51 +61,59 @@ const canvas = document.getElementById("bgCanvas");
 if (canvas) {
   const ctx = canvas.getContext("2d");
 
-  function resizeCanvas() {
-    const ratio = window.devicePixelRatio || 1;
+  if (ctx) {
+    function resizeCanvas() {
+      const ratio = window.devicePixelRatio || 1;
 
-    canvas.width = window.innerWidth * ratio;
-    canvas.height = window.innerHeight * ratio;
+      canvas.width = window.innerWidth * ratio;
+      canvas.height = window.innerHeight * ratio;
 
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
 
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const bubbles = Array.from({ length: 65 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 5 + 2,
+      speed: Math.random() * 0.4 + 0.2,
+      opacity: Math.random() * 0.25 + 0.1
+    }));
+
+    function animateBubbles() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      bubbles.forEach((bubble) => {
+        bubble.y -= bubble.speed;
+
+        if (bubble.y < -bubble.r) {
+          bubble.y = window.innerHeight + bubble.r;
+          bubble.x = Math.random() * window.innerWidth;
+        }
+
+        ctx.beginPath();
+        ctx.arc(
+          bubble.x,
+          bubble.y,
+          bubble.r,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle = `rgba(255, 190, 150, ${bubble.opacity})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateBubbles);
+    }
+
+    animateBubbles();
   }
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-
-  const bubbles = Array.from({ length: 65 }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    r: Math.random() * 5 + 2,
-    speed: Math.random() * 0.4 + 0.2,
-    opacity: Math.random() * 0.25 + 0.1
-  }));
-
-  function animateBubbles() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-    bubbles.forEach((bubble) => {
-      bubble.y -= bubble.speed;
-
-      if (bubble.y < -bubble.r) {
-        bubble.y = window.innerHeight + bubble.r;
-        bubble.x = Math.random() * window.innerWidth;
-      }
-
-      ctx.beginPath();
-      ctx.arc(bubble.x, bubble.y, bubble.r, 0, Math.PI * 2);
-
-      ctx.fillStyle = `rgba(255, 190, 150, ${bubble.opacity})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(animateBubbles);
-  }
-
-  animateBubbles();
 }
 
 
@@ -141,4 +149,43 @@ if (experiencePhotos.length > 1) {
       experienceDots[experiencePhotoIndex].classList.add("active");
     }
   }, 3000);
+}
+
+
+/* CONTACT FORM: OPEN VISITOR'S EMAIL APP */
+
+/* CONTACT FORM: OPEN GMAIL IN A NEW TAB */
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("contactName").value.trim();
+    const email = document.getElementById("contactEmail").value.trim();
+    const message = document.getElementById("contactMessage").value.trim();
+
+    if (!name || !email || !message) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    const recipient = "vishwakarmadivyanshijan10@gmail.com";
+
+    const subject = `Portfolio message from ${name}`;
+
+    const body =
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${message}`;
+
+    const gmailUrl =
+      "https://mail.google.com/mail/?view=cm&fs=1" +
+      "&to=" + encodeURIComponent(recipient) +
+      "&su=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  });
 }
